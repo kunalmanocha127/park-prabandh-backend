@@ -28,6 +28,7 @@ classNames = ['occupied_slot', 'free_slot']
 print("\n--- Loading Shared YOLO Model ---")
 try:
     model = YOLO(model_path)
+    model.to('cpu')
     print("✅ Model Loaded into Memory.")
 except Exception as e:
     print(f"❌ Error loading model: {e}")
@@ -89,4 +90,5 @@ if __name__ == "__main__":
     print(f"🔗 Feed 2: http://localhost:5000/video_feed_2")
     
     # threaded=True allows Flask to handle both generators at the same time
+
     app.run(host='0.0.0.0', port=5000, debug=False, threaded=True)
